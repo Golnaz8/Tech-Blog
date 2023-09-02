@@ -1,14 +1,14 @@
 [
     {
       "title": "Building a Single Page Application (SPA) with JavaScript and a Framework",
-      "body": "This advanced-level blog post could explore how to build a Single Page Application (SPA) using a JavaScript framework like React, Angular, or Vue.js. It could walk readers through the process of setting up a basic SPA, handling routing, and managing state."
+      "body": "This advanced-level blog post could explore how to build a Single Page Application (SPA) using a JavaScript framework like React, Angular, or Vue.js."
     },
     {
         "title": "Effective Debugging Techniques in JavaScript",
-        "body": "Debugging is an essential skill for developers. This post could provide tips and techniques for debugging JavaScript code, including using browser developer tools, console.log(), breakpoints, and common debugging pitfalls."
+        "body": "Debugging is an essential skill for developers. This post could provide tips and techniques for debugging JavaScript code."
     },
     {
         "title": "Exploring Modern JavaScript ES6 Features",
-        "body": "This post could delve into some of the more recent features of JavaScript, such as arrow functions, template literals, destructuring, and the spread/rest operators. It could explain how these features improve code readability and efficiency."
+        "body": "This post could delve into some of the more recent features of JavaScript, such as arrow functions."
     }
   ]
