@@ -16,21 +16,15 @@
         <span role="img" aria-label="money">📗</span>
         <a href="/">Blog Tech</a>
       </h1>
-      <h1>
-        {{#if logged_in}}
-        <a href="/dashboard">Dashboard</a>
-        {{else}}
-        <a href="/login">Dashboard</a>
-        {{/if}}
-      <h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
+
+      <!-- Conditionally render login or logout links -->
+      {{#if logged_in}}
+      <h1><a href="/dashboard">Dashboard</a></h1>
+      <h1><button class="no-button" id="logout">logout</button></h1>
+      {{else}}
+      <h1><a href="/login">login</a></h1>
+      {{/if}}
+
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
