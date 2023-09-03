@@ -53,6 +53,33 @@ router.get('/post/:id', withAuth, async (req, res) => {
   }
 });
 
+// Create a new route for updating a post
+router.get('/update/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    if (!postData) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    const post = postData.get({ plain: true });
+
+    // Send the post data as JSON to the client
+    res.json({ post, logged_in: true });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {

@@ -11,18 +11,19 @@
 
 <body>
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+    <header class="display-flex align-center p-2">
       <h1>
         <span role="img" aria-label="money">📗</span>
-        <a href="/">Blog Tech</a>
+        <span class="mr-5">Blog Tech</span>
       </h1>
+      <h3 class="mr-5"><a href="/">Home</a></h3>
+      <h3 class="mr-5"><a href="/dashboard">Dashboard</a></h3>
 
       <!-- Conditionally render login or logout links -->
       {{#if logged_in}}
-      <h1><a href="/dashboard">Dashboard</a></h1>
-      <h1><button class="no-button" id="logout">logout</button></h1>
+      <h3><button class="no-button" id="logout">logout</button></h3>
       {{else}}
-      <h1><a href="/login">login</a></h1>
+      <h3><a href="/login">login</a></h3>
       {{/if}}
 
     </header>

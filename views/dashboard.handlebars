@@ -23,8 +23,9 @@
     </form>
   </div>
 
+
   {{#if posts.length}}
-  <div class="col-md-6 post-list">
+  <div class="col-md-6">
     <h3>Current Posts:</h3>
 
     {{#each posts as |post|}}
@@ -32,13 +33,38 @@
       <div class="col-md-8">
         <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2  post-list">
         <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div>
+      <div class="col-md-2 post-list-edit">
+        <button class="btn btn-sm btn-info" data-id-u="{{post.id}}">EDIT</button>
       </div>
     </div>
     {{/each}}
   </div>
   {{/if}}
+</div>  
+
+
+{{#if editMode}}
+<div class="col-md-6">
+  <h3>Edit Post:</h3>
+
+  <form class="form edit-post-form">
+    <div class="form-group">
+      <label for="edit-post-title">Post Title:</label>
+      <input class="form-input" type="text" id="edit-post-title" name="edit-post-title" value="{{post.title}}" />
+    </div>
+    <div class="form-group">
+      <label for="edit-post-desc">Description:</label>
+      <textarea class="form-input" id="edit-post-desc" name="edit-post-desc">{{post.body}}</textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Update</button>
+      
+    </div>
+  </form>
 </div>
+{{/if}}
 
 <script src="./js/dashboard.js"></script>
