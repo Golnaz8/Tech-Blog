@@ -33,21 +33,31 @@ router.get('/post/:id', withAuth, async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['username'],
+          attributes: ["id", "username"],
         },
         {
           model: Comment,
-          attributes: ['body'],
+          //join of joined data
+          include: [
+            {
+              model: User,
+              attributes: ["id", "username"],
+            },
+          ],
         },
       ],
     });
 
     const post = postData.get({ plain: true });
-
-    res.render('post', {
-      ...post,
-      logged_in: true
-    });
+    if (post) {
+      res.render('post', {
+        ...post,
+        logged_in: true,
+        postData: post,
+      });
+    } else {
+      res.redirect("/");
+    }
   } catch (err) {
     res.status(500).json(err);
   }
@@ -66,13 +76,12 @@ router.get('/update/:id', withAuth, async (req, res) => {
     });
 
     if (!postData) {
-      return res.status(404).json({ message: 'Post not found' });
+      res.redirect("/dashboard");
     }
-
-    const post = postData.get({ plain: true });
+      const post = postData.get({ plain: true });
 
     // Send the post data as JSON to the client
-    res.json({ post, logged_in: true });
+    res.render('update',{post, logged_in: true, id: req.body.id });
   } catch (err) {
     res.status(500).json(err);
   }

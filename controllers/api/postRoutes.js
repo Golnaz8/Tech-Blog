@@ -1,3 +1,4 @@
+const express = require('express');
 const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
@@ -15,23 +16,34 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+//delete post
+router.delete("/:id", async (req, res) => {
   try {
-    const postData = await Post.destroy({
+    const deletePostData = await Post.destroy({
       where: {
         id: req.params.id,
-        userId: req.session.user_id,
       },
     });
-
-    if (!postData) {
-      res.status(404).json({ message: 'No project found with this id!' });
-      return;
-    }
-
-    res.status(200).json(postData);
+    return res.status(200).json(deletePostData);
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+    return res.status(500).json(err);
+  }
+});
+
+
+//update post
+router.put("/:id", async (req, res) => {
+  try {
+    const updateResult = await Post.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    return res.status(200).json(updateResult);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json(err);
   }
 });
 
