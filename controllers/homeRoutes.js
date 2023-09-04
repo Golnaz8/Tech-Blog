@@ -81,7 +81,11 @@ router.get('/update/:id', withAuth, async (req, res) => {
       const post = postData.get({ plain: true });
 
     // Send the post data as JSON to the client
-    res.render('update',{post, logged_in: true, id: req.body.id });
+    res.render('update',{
+      post, 
+      logged_in: true, 
+      id: req.body.id,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
