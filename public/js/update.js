@@ -7,7 +7,7 @@
 
     if (title && body) {
 
-      const id = event.currentTarget.getAttribute('data-idU');
+      const id = event.currentTarget.getAttribute('data-id');
       console.log(`Edit button clicked for post ID: ${id}`);
 
 

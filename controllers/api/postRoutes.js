@@ -33,9 +33,11 @@ router.delete("/:id", async (req, res) => {
 
 
 //update post
-router.put("/:id", async (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   try {
-    const updateResult = await Post.update(req.body, {
+    const updateResult = await Post.update(
+      req.body, 
+      {
       where: {
         id: req.params.id,
       },
