@@ -7,7 +7,10 @@
 
 {{!-- ----------------------------add place for previous comment --}}
 
-
+{{#each comments as |comment|}}
+<h1>{{comment.body}}</h1>
+<p>Written by {{comment.user.username}}</p>
+{{/each}}
 
 
 
@@ -25,3 +28,5 @@
     </form>
 
 </div>
+
+<script src="/js/post-comment.js"></script>

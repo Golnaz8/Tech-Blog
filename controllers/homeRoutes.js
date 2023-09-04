@@ -47,10 +47,17 @@ router.get('/post/:id', withAuth, async (req, res) => {
         },
       ],
     });
+    console.log(`*******************************************************\n****************************************`)
 
     const post = postData.get({ plain: true });
+    console.log(post);
+    post.comments = post.comments.map(comment => ({...comment, canDelete: comment.userId == req.session.user_id}))
+    console.log(`*******************************************************\n****************************************`)
+console.log(post)
+console.log(`*******************************************************\n****************************************`)
+console.log(post.comments)
     if (post) {
-      res.render('post', {
+      res.render('post-comment', {
         ...post,
         logged_in: true,
         postData: post,
