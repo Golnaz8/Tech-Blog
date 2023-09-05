@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// api/comments to creat comments
 router.post('/', withAuth, async (req, res) => {
   try {
     console.log(`*******************************************************\n****************************************`)
@@ -25,6 +26,7 @@ console.log(newComment)
   }
 });
 
+// api/comments/:id to delete a selected comment ut I do not use this router bacause it was not in acceptance criteria
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const commentData = await Comment.destroy({
